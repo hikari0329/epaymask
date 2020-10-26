@@ -79,14 +79,14 @@ let data;
 function getData(){
     const xhr = new XMLHttpRequest;
     xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
-	xhr.open('get','mask_data_e01.json',true)
+	//xhr.open('get','mask_data_e01.json',true)
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
         data = JSON.parse(xhr.responseText).features;
         L.control.zoom({ position: 'topright' }).addTo(map);
         addMarker();
-        renderList('竹山鎮','南投縣');
+        //renderList('竹山鎮','南投縣');
         addCountyList();
     }
 }
@@ -101,15 +101,36 @@ init();
 //將marker群組套件載入
 const markers = new L.MarkerClusterGroup({ disableClusteringAtZoom: 18 }).addTo(map);
 
+function getLoc(addr){
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode(
+		{address: addr },
+		function (result, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+
+				var location = result[0].geometry.location;
+				alert(location.lat() + "," + results[0].geometry.location.lng());
+				// location.Pa 緯度
+				// location.Qa 經度
+
+			} else {
+				alert(addr);
+				alert('解析失敗!回傳狀態為：' + status);
+			}
+	});
+}
+
 //倒入全國藥局資料並標上marker
 function addMarker(){
     for(let i = 0;i<data.length;i++){
         const pharmacyName = data[i].properties.name;
         const maskAdult = data[i].properties.mask_adult;
         const maskChild = data[i].properties.mask_child;
-        const lat = data[i].geometry.coordinates[1];
-        const lng = data[i].geometry.coordinates[0];
+        //const lat = data[i].geometry.coordinates[1];
+        //const lng = data[i].geometry.coordinates[0];
+        		
         const pharmacyAddress = data[i].properties.address;
+		getLoc(pharmacyAddress);
         const pharmacyPhone = data[i].properties.phone;
         const pharmacyNote = data[i].properties.note;
         if(maskAdult == 0 || maskChild == 0){
@@ -322,7 +343,7 @@ function geoTownView(e) {
         }
     }
     map.setView(townLatLng, 17);
-    renderList(town,county);
+    //renderList(town,county);
 }
 
 //在左邊欄印出藥局名稱
