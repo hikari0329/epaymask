@@ -79,15 +79,14 @@ let data;
 function getData(){
     const xhr = new XMLHttpRequest;
     xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
-	//xhr.open('get','mask_data_e01.json',true)
+	xhr.open('get','mask_data_e01.json',true)
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
-        //data = JSON.parse(xhr.responseText).features;
-		data = JSON.parse(xhr.responseText);
+        data = JSON.parse(xhr.responseText).features;
         L.control.zoom({ position: 'topright' }).addTo(map);
         addMarker();
-        //renderList('竹山鎮','南投縣');
+        renderList('竹山鎮','南投縣');
         addCountyList();
     }
 }
