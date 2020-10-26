@@ -78,8 +78,8 @@ let data;
 
 function getData(){
     const xhr = new XMLHttpRequest;
-    xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
-	//xhr.open('get','mask_data_e01.json',true)
+    //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
+	xhr.open('get','mask_data_e01.json',true)
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
@@ -105,15 +105,14 @@ const markers = new L.MarkerClusterGroup({ disableClusteringAtZoom: 18 }).addTo(
 //倒入全國藥局資料並標上marker
 function addMarker(){
     for(let i = 0;i<data.length;i++){
-        const pharmacyName = data[i].營業人名稱;
-        const maskAdult = data[i].接受行動支付工具;
-        const maskChild = data[i].營業狀況;
-        const lat = 2502223.87;//data[i].geometry.coordinates[1];
-        const lng = 178805.56;//data[i].geometry.coordinates[0];
-        const pharmacyAddress = data[i].營業人地址;
-        const pharmacyPhone = "";
-        const pharmacyNote = data[i].稽徵機關;
-		
+        const pharmacyName = data[i].properties.name;
+        const maskAdult = data[i].properties.mask_adult;
+        const maskChild = data[i].properties.mask_child;
+        const lat = data[i].geometry.coordinates[1];
+        const lng = data[i].geometry.coordinates[0];
+        const pharmacyAddress = data[i].properties.address;
+        const pharmacyPhone = data[i].properties.phone;
+        const pharmacyNote = data[i].properties.note;
         if(maskAdult == 0 || maskChild == 0){
             mask = redIcon;
         }else if (maskAdult < 100 && maskAdult !== 0 || maskChild < 100 && maskChild !== 0){
@@ -139,7 +138,6 @@ function addMarker(){
         } else {
             maskChildJudge = 'bg-none';
         }
-		
         markers.addLayer(L.marker([lat,lng], {icon: mask}).bindPopup(
             // `<p style="text-align:center; font-weight:bold; font-size:1.5em; margin:15px 0;">${pharmacyName}</p>
             // <div class="popupBtn">
@@ -150,7 +148,7 @@ function addMarker(){
             <p class="popupTitle" data-name="${pharmacyName}"><span>${pharmacyName}</span></p>
             <hr>
             <p class="popupText"><i class="fas fa-map-marker-alt"></i> ${pharmacyAddress}</p>
-            //<p class="popupText"><i class="fas fa-phone-square-alt"></i> ${pharmacyPhone}</p>
+            <p class="popupText"><i class="fas fa-phone-square-alt"></i> ${pharmacyPhone}</p>
             <p class="popupNote"> ${pharmacyNote}</p>
             <div class="panelMaskNum" data-name="${pharmacyName}">
             <div class="${maskAdultJudge}">
