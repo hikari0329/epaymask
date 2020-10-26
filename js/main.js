@@ -130,7 +130,7 @@ function addMarker(){
         //const lng = data[i].geometry.coordinates[0];
         		
         const pharmacyAddress = data[i].properties.address;
-		getLoc(pharmacyAddress);
+		getLoc("台北市忠孝東路五段");
         const pharmacyPhone = data[i].properties.phone;
         const pharmacyNote = data[i].properties.note;
         if(maskAdult == 0 || maskChild == 0){
