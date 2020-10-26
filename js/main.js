@@ -78,8 +78,8 @@ let data;
 
 function getData(){
     const xhr = new XMLHttpRequest;
-    xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
-	//xhr.open('get','mask_data_e01.json',true)
+    //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
+	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/mask_data_e01.json',true)
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
@@ -109,12 +109,12 @@ function getLoc(addr){
 			if (status == google.maps.GeocoderStatus.OK) {
 
 				var location = result[0].geometry.location;
-				alert(location.Pa);
+				alert(status);
 				// location.Pa 緯度
 				// location.Qa 經度
 
 			} else {
-				alert(addr);
+				//alert(addr);
 				//alert(results[0].geometry.location.Pa);
 				alert('解析失敗!回傳狀態為：' + status);
 			}
@@ -123,13 +123,13 @@ function getLoc(addr){
 
 //倒入全國藥局資料並標上marker
 function addMarker(){
-	getLoc("台北市忠孝東路五段");
+	getLoc("台北市忠孝東路");
     for(let i = 0;i<data.length;i++){
         const pharmacyName = data[i].properties.name;
         const maskAdult = data[i].properties.mask_adult;
         const maskChild = data[i].properties.mask_child;
-        //const lat = data[i].geometry.coordinates[1];
-        //const lng = data[i].geometry.coordinates[0];
+        const lat = data[i].geometry.coordinates[1];
+        const lng = data[i].geometry.coordinates[0];
         		
         const pharmacyAddress = data[i].properties.address;
 		
