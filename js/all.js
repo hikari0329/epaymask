@@ -78,8 +78,8 @@ let data;
 
 function getData(){
     const xhr = new XMLHttpRequest;
-    //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
-	xhr.open('get','e01_data.json',true)
+    xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
+	//xhr.open('get','e01_data.json',true)
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
