@@ -109,12 +109,13 @@ function getLoc(addr){
 			if (status == google.maps.GeocoderStatus.OK) {
 
 				var location = result[0].geometry.location;
-				alert(location.lat() + "," + results[0].geometry.location.lng());
+				alert(location.Pa);
 				// location.Pa 緯度
 				// location.Qa 經度
 
 			} else {
 				alert(addr);
+				//alert(results[0].geometry.location.Pa);
 				alert('解析失敗!回傳狀態為：' + status);
 			}
 	});
@@ -122,6 +123,7 @@ function getLoc(addr){
 
 //倒入全國藥局資料並標上marker
 function addMarker(){
+	getLoc("台北市忠孝東路五段");
     for(let i = 0;i<data.length;i++){
         const pharmacyName = data[i].properties.name;
         const maskAdult = data[i].properties.mask_adult;
@@ -130,7 +132,7 @@ function addMarker(){
         //const lng = data[i].geometry.coordinates[0];
         		
         const pharmacyAddress = data[i].properties.address;
-		getLoc("台北市忠孝東路五段");
+		
         const pharmacyPhone = data[i].properties.phone;
         const pharmacyNote = data[i].properties.note;
         if(maskAdult == 0 || maskChild == 0){
