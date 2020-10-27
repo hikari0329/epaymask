@@ -4,6 +4,59 @@
         {
             "type": "Feature",
             "properties": {
+                "id": "1",
+                "name": "教堂街頭服飾店",
+                "phone": "",
+                "address": "高雄市新興區振華里仁智街２５４號１樓",
+                "mask_adult": 台灣Pay,
+                "mask_child": 營業中,
+                "updated": "2020\/10\/22 13:53:34",
+                "available":,
+                "note": "-",
+                "custom_note": "",
+                "website": "",
+                "county": "",
+                "town": "",
+                "cunli": "",
+                "service_periods": "NNNNNNYNNNNNNYNNNNNNY"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.533012,
+                    25.042385
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "2",
+                "name": "崔記茶餐廳",
+                "phone": "(07)7215949",
+                "address": "高雄市前鎮區興東里二聖二路６７號",
+                "mask_adult": 台灣Pay,
+                "mask_child": 營業中,
+                "updated": "2020\/10\/22 13:53:34",
+                "available": ,
+                "custom_note": "",
+                "website": "",
+                "county": "高雄市",
+                "town": "苓雅區",
+                "cunli": "林興里",
+                "service_periods": "NNNNNNNNNNNNNYNNNNNNY"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.533012,
+                    25.042385
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
                 "id": "5902080858",
                 "name": "福興藥局",
                 "phone": "(07)3331862",
