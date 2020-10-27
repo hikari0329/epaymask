@@ -80,7 +80,7 @@ function getData(){
     const xhr = new XMLHttpRequest;
     //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
 	//xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/mask_data_e01.json',true);
-	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/test2.json',true);
+	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/epay_data_all_trim.json',true);
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
@@ -137,16 +137,16 @@ function addMarker(){
 	//alert(lngy);
     for(let i = 0;i<data.length;i++){
         const pharmacyName = data[i].營業人名稱; //.properties.營業人名稱;
-        const maskAdult = data[i].mask_adult;
-        const maskChild = data[i].mask_child;
+        //const maskAdult = data[i].mask_adult;
+        //const maskChild = data[i].mask_child;
         const lat = data[i].logy;
         const lng = data[i].latx;
         alert(lat);
 		alert(lng);	
-        const pharmacyAddress = data[i].address;
+        const pharmacyAddress = data[i].營業人地址;
 		//alert(pharmacyAddress);	
-        const pharmacyPhone = data[i].phone;
-        const pharmacyNote = data[i].note;
+        //const pharmacyPhone = data[i].phone;
+        const pharmacyNote = data[i].接受行動支付工具;
 		
 		mask = greenIcon;
 		 /** 
@@ -364,7 +364,7 @@ function renderList(town,county){
         const pharmacyName = data[i].營業人名稱;
         const maskAdult = data[i].mask_adult;
         const maskChild = data[i].mask_child;
-        const pharmacyAddress = data[i].address;
+        const pharmacyAddress = data[i].營業人地址;
         const pharmacyPhone = data[i].phone;
         const pharmacyNote = data[i].note;
         let maskAdultJudge;
