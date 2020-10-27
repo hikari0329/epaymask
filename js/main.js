@@ -155,6 +155,7 @@ function addMarker(){
         }else{
             mask = greenIcon;
         }
+		*/
         let maskAdultJudge;
         let maskChildJudge;
 
@@ -173,7 +174,7 @@ function addMarker(){
         } else {
             maskChildJudge = 'bg-none';
         }
-		*/
+		
 		
         markers.addLayer(L.marker([lat,lng], {icon: mask}).bindPopup(
             // `<p style="text-align:center; font-weight:bold; font-size:1.5em; margin:15px 0;">${pharmacyName}</p>
