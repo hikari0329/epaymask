@@ -141,8 +141,8 @@ function addMarker(){
         //const maskChild = data[i].mask_child;
         const lat = data[i].logy;
         const lng = data[i].latx;
-        alert(lat);
-		alert(lng);	
+        //alert(lat);
+		//alert(lng);	
         const pharmacyAddress = data[i].營業人地址;
 		//alert(pharmacyAddress);	
         //const pharmacyPhone = data[i].phone;
