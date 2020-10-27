@@ -436,7 +436,8 @@ align-items: center;
 }
 
 .GeoBtn img{
-	width:18px;
+	max-width:50%; /*不使用width:100% 是因避免圖片解析度不好，隨父元素被放大時會糊掉*/
+    height:auto;
 }
 
 .pop-style{
@@ -542,4 +543,45 @@ align-items: center;
 
 .countyList{
 	margin-bottom:10px;
+}
+
+.wrap{
+    max-width: 600px;
+    margin: 0 auto;
+    height: 200px;
+    background: green;
+}
+@media(max-width: 768px){
+    .wrap{
+        height: auto;//高度自動
+        padding-top: 20px;//內距上方預留20px
+    }
+}
+.menu{
+    width:20%;
+    height: 30%;
+    background: green;
+    float: left;
+}
+@media(max-width: 768px){
+    .menu{
+        width:100%;//寬度滿版
+        float: none;//清除浮動
+        height: auto;//高度自動
+        padding: 0px auto;//內距上方下方預留20px
+    }
+}
+.content{
+    width: 20%;
+    height: 100px;
+    background: blue;
+    float: left;
+}
+@media(max-width: 700px){
+    .content{
+        width:100%;//寬度滿版
+        float: none;//清除浮動
+        height: auto;//高度自動
+        padding: 20px 0;//內距上方下方預留20px
+    }
 }
