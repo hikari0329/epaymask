@@ -189,8 +189,9 @@ function addMarker(){
             `<div class="popupInfo">
             <p class="popupTitle" data-name="${pharmacyName}"><span>${pharmacyName}</span></p>
             <hr>
-            <p class="popupText"><i class="fas fa-map-marker-alt"></i><a target="_blank" href=${URL}">${pharmacyAddress}</p>
-            <p class="popupNote"> ${pharmacyNote}</p>
+            <p class="popupText"><i class="fas fa-map-marker-alt"></i><a target="_blank" href=${URL}">${pharmacyAddress}</a></p>
+			<hr>
+            <p class="popupNote"><h1>行動支付工具:${pharmacyNote}</h1></p>
             `
         ));
     }
