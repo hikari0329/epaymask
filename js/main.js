@@ -80,11 +80,11 @@ function getData(){
     const xhr = new XMLHttpRequest;
     //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
 	//xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/mask_data_e01.json',true);
-	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/test3.json',true);
+	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/test2.json',true);
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
-        data = JSON.parse(xhr.responseText).features;
+        data = JSON.parse(xhr.responseText);
         L.control.zoom({ position: 'topright' }).addTo(map);
         addMarker();
         //renderList('竹山鎮','南投縣');
@@ -139,11 +139,12 @@ function addMarker(){
         const pharmacyName = data[i].營業人名稱; //.properties.營業人名稱;
         const maskAdult = data[i].mask_adult;
         const maskChild = data[i].mask_child;
-        const lat = data[i].latx;
-        const lng = data[i].logy;
-        		
+        const lat = data[i].logy;
+        const lng = data[i].latx;
+        alert(lat);
+		alert(lng);	
         const pharmacyAddress = data[i].address;
-		
+		//alert(pharmacyAddress);	
         const pharmacyPhone = data[i].phone;
         const pharmacyNote = data[i].note;
 		
@@ -297,7 +298,7 @@ function addCountyList(){
     let countyStr='';
     countyStr += '<option>請選擇縣市</option>'
     for(let i=0;i<data.length;i++){
-        const countyName = data[i].properties.county;
+        const countyName = data[i].county;
         if(allCounty.indexOf(countyName) == -1 && countyName !== ''){
         allCounty.push(countyName);
         countyStr += `<option value="${countyName}">${countyName}</option>`
@@ -316,9 +317,9 @@ function addTownList(e){
     let allTown = [];
     let newTownList = '';
     for (let i = 0; i < data.length; i++) {
-        let countyMatch = data[i].properties.county;
+        let countyMatch = data[i].county;
         if (countyValue == countyMatch) {
-            allTown.push(data[i].properties.town);
+            allTown.push(data[i].town);
         }
     }
 
@@ -340,14 +341,14 @@ function geoTownView(e) {
     let county = '';
 
     for (let i = 0; i < data.length; i++) {
-        let townTarget = data[i].properties.town;
-        let countyTarget = data[i].properties.county;
+        let townTarget = data[i].town;
+        let countyTarget = data[i].county;
         let lat = data[i].geometry.coordinates[0];
         let lng = data[i].geometry.coordinates[1];
 
         if (townTarget == town && countyTarget == countySelector.value) {
             townLatLng = [lng, lat];
-            county = data[i].properties.county;
+            county = data[i].county;
         }
     }
     map.setView(townLatLng, 17);
@@ -358,14 +359,14 @@ function geoTownView(e) {
 function renderList(town,county){
     let str = '';
     for(let i = 0;i<data.length;i++){
-        const countyName = data[i].properties.county;
-        const townName = data[i].properties.town;
-        const pharmacyName = data[i].properties.營業人名稱;
-        const maskAdult = data[i].properties.mask_adult;
-        const maskChild = data[i].properties.mask_child;
-        const pharmacyAddress = data[i].properties.address;
-        const pharmacyPhone = data[i].properties.phone;
-        const pharmacyNote = data[i].properties.note;
+        const countyName = data[i].county;
+        const townName = data[i].town;
+        const pharmacyName = data[i].營業人名稱;
+        const maskAdult = data[i].mask_adult;
+        const maskChild = data[i].mask_child;
+        const pharmacyAddress = data[i].address;
+        const pharmacyPhone = data[i].phone;
+        const pharmacyNote = data[i].note;
         let maskAdultJudge;
         let maskChildJudge;
 
