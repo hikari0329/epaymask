@@ -1,31 +1,30 @@
 {
-    "type": "FeatureCollection",
-    "features": [
-            "type": "Feature",
-            "properties": {
-                "id": "1",
-                "name": "欣技髮型美容",
-                "phone": "",
-                "address": "高雄市苓雅區中正里廣州一街１５７之２號",
-                "mask_adult": 0,
-                "mask_child": 0,
-                "updated": "20200819",
-                "available":,
-                "note": "台灣Pay",
-                "custom_note": "台灣Pay",
-                "website": "",
-                "county": "",
-                "town": "",
-                "cunli": "",
-                "service_periods": "NNNNNNYNNNNNNYNNNNNNY"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    179669.435,
-                    2503158.89
-                ]
-            }
-        }
-    ]
+   "type":"FeatureCollection",
+   "features":[
+      "type":"Feature",
+      "properties":{
+         "id":"1",
+         "name":"欣技髮型美容",
+         "phone":"",
+         "address":"高雄市苓雅區中正里廣州一街１５７之２號",
+         "mask_adult":0,
+         "mask_child":0,
+         "updated":"20200819",
+         "available":,
+         "note":"台灣Pay",
+         "custom_note":"台灣Pay",
+         "website":"",
+         "county":"",
+         "town":"",
+         "cunli":"",
+         "service_periods":"NNNNNNYNNNNNNYNNNNNNY"
+      },
+      "geometry":{
+         "type":"Point",
+         "coordinates":[
+            179669.435,
+            2503158.89
+         ]
+      }
+   ]
 }
