@@ -84,7 +84,7 @@ function getData(){
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
-        data = JSON.parse(xhr.responseText).features;
+        data = JSON.parse(xhr.responseText); //.features;
         L.control.zoom({ position: 'topright' }).addTo(map);
         addMarker();
         //renderList('竹山鎮','南投縣');
@@ -136,16 +136,16 @@ function addMarker(){
 	//alert(latx);
 	//alert(lngy);
     for(let i = 0;i<data.length;i++){
-        const pharmacyName = data[i].properties.營業人名稱;
-        const maskAdult = data[i].properties.mask_adult;
-        const maskChild = data[i].properties.mask_child;
-        const lat = data[i].geometry.coordinates[1];
-        const lng = data[i].geometry.coordinates[0];
+        const pharmacyName = data[i].營業人名稱; //.properties.營業人名稱;
+        const maskAdult = data[i].mask_adult;
+        const maskChild = data[i].mask_child;
+        const lat = data[i].latx;
+        const lng = data[i].logy;
         		
-        const pharmacyAddress = data[i].properties.address;
+        const pharmacyAddress = data[i].address;
 		
-        const pharmacyPhone = data[i].properties.phone;
-        const pharmacyNote = data[i].properties.note;
+        const pharmacyPhone = data[i].phone;
+        const pharmacyNote = data[i].note;
 		mask = greenIcon;
 		 /** 
         if(maskAdult == 0 || maskChild == 0){
