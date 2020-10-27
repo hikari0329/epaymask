@@ -80,11 +80,11 @@ function getData(){
     const xhr = new XMLHttpRequest;
     //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
 	//xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/mask_data_e01.json',true);
-	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/test2.json',true);
+	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/test3.json',true);
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
-        data = JSON.parse(xhr.responseText); //.features;
+        data = JSON.parse(xhr.responseText).features;
         L.control.zoom({ position: 'topright' }).addTo(map);
         addMarker();
         //renderList('竹山鎮','南投縣');
@@ -136,16 +136,17 @@ function addMarker(){
 	//alert(latx);
 	//alert(lngy);
     for(let i = 0;i<data.length;i++){
-        const pharmacyName = data[i].營業人名稱; //.properties.營業人名稱;
-        const maskAdult = data[i].mask_adult;
-        const maskChild = data[i].mask_child;
-        const lat = data[i].latx;
-        const lng = data[i].logy;
+        const pharmacyName = data[i].features.營業人名稱; //.properties.營業人名稱;
+        const maskAdult = data[i].features.mask_adult;
+        const maskChild = data[i].features.mask_child;
+        const lat = data[i].features.latx;
+        const lng = data[i].features.logy;
         		
-        const pharmacyAddress = data[i].address;
+        const pharmacyAddress = data[i].features.address;
 		
-        const pharmacyPhone = data[i].phone;
-        const pharmacyNote = data[i].note;
+        const pharmacyPhone = data[i].features.phone;
+        const pharmacyNote = data[i].features.note;
+		
 		mask = greenIcon;
 		 /** 
         if(maskAdult == 0 || maskChild == 0){
