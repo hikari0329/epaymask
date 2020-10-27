@@ -158,7 +158,10 @@ function addMarker(){
 		*/
         let maskAdultJudge;
         let maskChildJudge;
-
+		maskAdultJudge = 'bg-sufficient';
+		maskChildJudge = 'bg-sufficient';
+		
+		 /**
         if (maskAdult >= 100) {
             maskAdultJudge = 'bg-sufficient';
         } else if (maskAdult < 100 && maskAdult !== 0) {
@@ -174,7 +177,7 @@ function addMarker(){
         } else {
             maskChildJudge = 'bg-none';
         }
-		
+		*/
 		
         markers.addLayer(L.marker([lat,lng], {icon: mask}).bindPopup(
             // `<p style="text-align:center; font-weight:bold; font-size:1.5em; margin:15px 0;">${pharmacyName}</p>
