@@ -79,7 +79,7 @@ let data;
 function getData(){
     const xhr = new XMLHttpRequest;
     //xhr.open('get','https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json',true)
-	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/mask_data_e01.json',true)
+	xhr.open('get','https://raw.githubusercontent.com/hikari0329/epaymask/gh-pages/mask_data_e01.json',true);
     xhr.send(null);
     xhr.onload = function(){
         document.querySelector('.loader').style.display = 'none';
@@ -87,12 +87,12 @@ function getData(){
         L.control.zoom({ position: 'topright' }).addTo(map);
         addMarker();
         //renderList('竹山鎮','南投縣');
-        addCountyList();
+        //addCountyList();
     }
 }
 
 function init(){
-    renderDate();
+    //renderDate();
     getData();
 }
 
@@ -101,29 +101,39 @@ init();
 //將marker群組套件載入
 const markers = new L.MarkerClusterGroup({ disableClusteringAtZoom: 18 }).addTo(map);
 
+var latx= 0;
+var lngy= 0;
 function getLoc(addr){
+	alert(addr);
 	var geocoder = new google.maps.Geocoder();
 	geocoder.geocode(
-		{address: addr },
-		function (result, status) {
+		{'address' : addr },
+		function (results, status) {
+			//alert(status);
 			if (status == google.maps.GeocoderStatus.OK) {
-
-				var location = result[0].geometry.location;
-				alert(status);
+				//alert("OK");
+				//var loc = results[0].geometry.location;
+				latx = results[0].geometry.location.lat();
+				lngy = results[0].geometry.location.lng();
+				//alert(location.Pa);
 				// location.Pa 緯度
 				// location.Qa 經度
+				//alert(latx);
 
 			} else {
 				//alert(addr);
 				//alert(results[0].geometry.location.Pa);
 				alert('解析失敗!回傳狀態為：' + status);
 			}
-	});
+		}	
+	);
 }
 
 //倒入全國藥局資料並標上marker
 function addMarker(){
-	getLoc("台北市忠孝東路");
+	//getLoc("台北市大安區忠孝東路三段100號");
+	//alert(latx);
+	//alert(lngy);
     for(let i = 0;i<data.length;i++){
         const pharmacyName = data[i].properties.name;
         const maskAdult = data[i].properties.mask_adult;
@@ -135,6 +145,8 @@ function addMarker(){
 		
         const pharmacyPhone = data[i].properties.phone;
         const pharmacyNote = data[i].properties.note;
+		mask = greenIcon;
+		 /** 
         if(maskAdult == 0 || maskChild == 0){
             mask = redIcon;
         }else if (maskAdult < 100 && maskAdult !== 0 || maskChild < 100 && maskChild !== 0){
@@ -160,6 +172,8 @@ function addMarker(){
         } else {
             maskChildJudge = 'bg-none';
         }
+		*/
+		
         markers.addLayer(L.marker([lat,lng], {icon: mask}).bindPopup(
             // `<p style="text-align:center; font-weight:bold; font-size:1.5em; margin:15px 0;">${pharmacyName}</p>
             // <div class="popupBtn">
