@@ -136,7 +136,7 @@ function addMarker(){
 	//alert(latx);
 	//alert(lngy);
     for(let i = 0;i<data.length;i++){
-        const pharmacyName = data[i].properties.name;
+        const pharmacyName = data[i].properties.營業人名稱;
         const maskAdult = data[i].properties.mask_adult;
         const maskChild = data[i].properties.mask_child;
         const lat = data[i].geometry.coordinates[1];
@@ -359,7 +359,7 @@ function renderList(town,county){
     for(let i = 0;i<data.length;i++){
         const countyName = data[i].properties.county;
         const townName = data[i].properties.town;
-        const pharmacyName = data[i].properties.name;
+        const pharmacyName = data[i].properties.營業人名稱;
         const maskAdult = data[i].properties.mask_adult;
         const maskChild = data[i].properties.mask_child;
         const pharmacyAddress = data[i].properties.address;
