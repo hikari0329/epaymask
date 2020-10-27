@@ -136,16 +136,16 @@ function addMarker(){
 	//alert(latx);
 	//alert(lngy);
     for(let i = 0;i<data.length;i++){
-        const pharmacyName = data[i].features.營業人名稱; //.properties.營業人名稱;
-        const maskAdult = data[i].features.mask_adult;
-        const maskChild = data[i].features.mask_child;
-        const lat = data[i].features.latx;
-        const lng = data[i].features.logy;
+        const pharmacyName = data[i].營業人名稱; //.properties.營業人名稱;
+        const maskAdult = data[i].mask_adult;
+        const maskChild = data[i].mask_child;
+        const lat = data[i].latx;
+        const lng = data[i].logy;
         		
-        const pharmacyAddress = data[i].features.address;
+        const pharmacyAddress = data[i].address;
 		
-        const pharmacyPhone = data[i].features.phone;
-        const pharmacyNote = data[i].features.note;
+        const pharmacyPhone = data[i].phone;
+        const pharmacyNote = data[i].note;
 		
 		mask = greenIcon;
 		 /** 
