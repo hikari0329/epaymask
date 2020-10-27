@@ -178,7 +178,8 @@ function addMarker(){
             maskChildJudge = 'bg-none';
         }
 		*/
-		
+		let URL;
+		URL = "https://www.google.com.tw/maps/place/" + pharmacyAddress;
         markers.addLayer(L.marker([lat,lng], {icon: mask}).bindPopup(
             // `<p style="text-align:center; font-weight:bold; font-size:1.5em; margin:15px 0;">${pharmacyName}</p>
             // <div class="popupBtn">
@@ -188,24 +189,8 @@ function addMarker(){
             `<div class="popupInfo">
             <p class="popupTitle" data-name="${pharmacyName}"><span>${pharmacyName}</span></p>
             <hr>
-            <p class="popupText"><i class="fas fa-map-marker-alt"></i> ${pharmacyAddress}</p>
-            <p class="popupText"><i class="fas fa-phone-square-alt"></i> ${pharmacyPhone}</p>
+            <p class="popupText"><i class="fas fa-map-marker-alt"></i><a target="_blank" href=${URL}">${pharmacyAddress}</p>
             <p class="popupNote"> ${pharmacyNote}</p>
-            <div class="panelMaskNum" data-name="${pharmacyName}">
-            <div class="${maskAdultJudge}">
-            <div class="popupLayout">
-            <img class="adultIconS" src="img/adultIconS.svg" alt="">
-            <p class="popupMaskNum">${maskAdult}</p>
-            </div>
-            </div>
-            &nbsp;<div class="${maskChildJudge}">
-            <div class="popupLayout">
-            <img class="kidIconS" src="img/kidIconS.svg" alt="">
-            <p class="popupMaskNum">${maskChild}</p>
-            </div>
-            </div>
-            </div>
-            </div>
             `
         ));
     }
@@ -402,7 +387,6 @@ function renderList(town,county){
             <div class="pharmacyTitle" data-lat="${data[i].geometry.coordinates[1]}" data-lng="${data[i].geometry.coordinates[0]}">
             <li data-name="${pharmacyName}"><span>${pharmacyName}</span></li>
             <p class="infoText"><i class="fas fa-map-marker-alt"></i> ${pharmacyAddress}</p>
-            <p class="infoText"><i class="fas fa-phone-square-alt"></i> ${pharmacyPhone}</p>
             <p class="noteText"> ${pharmacyNote}</p>
             <div class="panelMaskNum" data-name="${pharmacyName}">
             <div class="${maskAdultJudge}">
